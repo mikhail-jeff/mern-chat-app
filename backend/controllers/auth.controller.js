@@ -2,6 +2,7 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { generateTokenAndSetCookie } from "../utils/generateToken.js";
 
+// *** SIGNUP
 export const signup = async (req, res) => {
 	const { fullName, username, password, confirmPassword, gender } = req.body;
 
@@ -52,6 +53,7 @@ export const signup = async (req, res) => {
 	}
 };
 
+// *** LOGIN
 export const login = async (req, res) => {
 	const { username, password } = req.body;
 
@@ -77,6 +79,7 @@ export const login = async (req, res) => {
 	}
 };
 
+// *** LOGOUT
 export const logout = (req, res) => {
 	try {
 		res.cookie("jwt", "", { maxAge: 0 });
