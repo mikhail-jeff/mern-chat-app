@@ -1,6 +1,7 @@
 import express from "express";
 import colors from "@colors/colors";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 5000;
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
