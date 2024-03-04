@@ -65,6 +65,7 @@ export const login = async (req, res) => {
 			return res.status(400).json({ error: `Invalid credentials` });
 		}
 
+		// generate jwt and cookie
 		generateTokenAndSetCookie(user._id, res);
 
 		res.status(200).json({
