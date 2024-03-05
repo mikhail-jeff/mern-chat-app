@@ -42,11 +42,11 @@ const Login = () => {
 					</label>
 
 					<p className="text-sm mt-2 inline-block">
-						&nbsp; Don&apos;t have an account? Sign-up&nbsp;
+						&nbsp; Don&apos;t have an account?
 						<Link
 							to={"/signup"}
-							className="text-gray-800 font-bold">
-							here
+							className="text-gray-800 font-bold hover:underline ml-2">
+							Sign-up here
 						</Link>
 					</p>
 

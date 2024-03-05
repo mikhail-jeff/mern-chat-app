@@ -12,6 +12,7 @@ const Signup = () => {
 		gender: "",
 	});
 
+	// signup hook
 	const { loading, signup } = useSignup();
 
 	const handleSubmit = async (e) => {
@@ -50,7 +51,7 @@ const Signup = () => {
 						<input
 							type="text"
 							className="grow"
-							placeholder="Fullname"
+							placeholder="Full Name"
 							value={inputs.fullName}
 							onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
 						/>
@@ -121,11 +122,11 @@ const Signup = () => {
 					/>
 
 					<p className="text-sm mt-2 inline-block">
-						&nbsp; Already have an account? Login&nbsp;
+						&nbsp; Already have an account?
 						<Link
 							to={"/login"}
-							className="text-gray-800 font-bold">
-							here
+							className="text-gray-800 font-bold hover:underline ml-2">
+							Login here
 						</Link>
 					</p>
 
