@@ -31,6 +31,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		// signup hook
 		await signup(inputs);
 
 		// clears after submitting
@@ -156,7 +157,11 @@ const Signup = () => {
 					</p>
 
 					<div>
-						<button className="btn btn-block btn-sm mt-2 h-11 text-lg">Sign-up</button>
+						<button
+							className="btn btn-block btn-sm mt-2 h-11 text-lg"
+							disabled={loading}>
+							{loading ? <span className="loading loading-spinner"></span> : "Sign-up"}
+						</button>
 					</div>
 				</form>
 			</div>
