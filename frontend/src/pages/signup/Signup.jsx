@@ -1,13 +1,44 @@
 import { Link } from "react-router-dom";
 import GenderCheckBox from "./GenderCheckBox";
+import { useState } from "react";
+import useSignup from "../../hooks/useSignup";
 
 const Signup = () => {
+	const [inputs, setInputs] = useState({
+		fullName: "",
+		username: "",
+		password: "",
+		confirmPassword: "",
+		gender: "",
+	});
+
+	const { loading, signup } = useSignup();
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		await signup(inputs);
+
+		// clears after submitting
+		setInputs({
+			fullName: "",
+			username: "",
+			password: "",
+			confirmPassword: "",
+			gender: "",
+		});
+	};
+
+	const handleCheckboxChange = (gender) => {
+		setInputs({ ...inputs, gender });
+	};
+
 	return (
 		<div className="flex flex-col items-center justify-center min-w-96 mx-auto">
 			<div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-0">
 				<h2 className="text-3xl font-semibold text-center text-gray-300 mb-10">Sign-up</h2>
 
-				<form>
+				<form onSubmit={handleSubmit}>
 					<label className="input input-bordered flex items-center gap-2 mb-4">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -20,6 +51,8 @@ const Signup = () => {
 							type="text"
 							className="grow"
 							placeholder="Fullname"
+							value={inputs.fullName}
+							onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
 						/>
 					</label>
 
@@ -35,6 +68,8 @@ const Signup = () => {
 							type="text"
 							className="grow"
 							placeholder="Username"
+							value={inputs.username}
+							onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
 						/>
 					</label>
 
@@ -54,6 +89,8 @@ const Signup = () => {
 							type="password"
 							className="grow"
 							placeholder="Password"
+							value={inputs.password}
+							onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
 						/>
 					</label>
 
@@ -73,10 +110,15 @@ const Signup = () => {
 							type="password"
 							className="grow"
 							placeholder="Confirm Password"
+							value={inputs.confirmPassword}
+							onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
 						/>
 					</label>
 
-					<GenderCheckBox />
+					<GenderCheckBox
+						onCheckboxChange={handleCheckboxChange}
+						selectedGender={inputs.gender}
+					/>
 
 					<p className="text-sm mt-2 inline-block">
 						&nbsp; Already have an account? Login&nbsp;
