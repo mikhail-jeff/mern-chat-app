@@ -41,6 +41,10 @@ const Signup = () => {
 			confirmPassword: "",
 			gender: "",
 		});
+
+		// reset password toggle
+		setShowPassword(false);
+		setShowConfirmPassword(false);
 	};
 
 	const handleCheckboxChange = (gender) => {
