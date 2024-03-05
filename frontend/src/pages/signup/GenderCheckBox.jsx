@@ -1,4 +1,11 @@
 const GenderCheckBox = ({ onCheckboxChange, selectedGender }) => {
+	const toggleCheckbox = (gender) => {
+		// Toggle the selected gender
+		const newSelectedGender = selectedGender === gender ? "" : gender;
+		// Call the parent component's onCheckboxChange function with the new selected gender
+		onCheckboxChange(newSelectedGender);
+	};
+
 	return (
 		<div className="flex">
 			<div className="form-control">
@@ -8,7 +15,7 @@ const GenderCheckBox = ({ onCheckboxChange, selectedGender }) => {
 						type="checkbox"
 						className="checkbox border-slate-900"
 						checked={selectedGender === "male"}
-						onChange={() => onCheckboxChange("male")}
+						onChange={() => toggleCheckbox("male")}
 					/>
 				</label>
 			</div>
@@ -20,7 +27,7 @@ const GenderCheckBox = ({ onCheckboxChange, selectedGender }) => {
 						type="checkbox"
 						className="checkbox border-slate-900"
 						checked={selectedGender === "female"}
-						onChange={() => onCheckboxChange("female")}
+						onChange={() => toggleCheckbox("female")}
 					/>
 				</label>
 			</div>
