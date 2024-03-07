@@ -52,7 +52,7 @@ export default useLogin;
 
 function handleInputErrors(username, password) {
 	if (!username || !password) {
-		toast.error("Username and password are required.");
+		toast.error("Username and password are required");
 		return false;
 	}
 
