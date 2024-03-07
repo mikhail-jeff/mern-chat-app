@@ -55,7 +55,7 @@ const Signup = () => {
 	return (
 		<div className="flex flex-col items-center justify-center min-w-96 mx-auto">
 			<div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-0">
-				<h2 className="text-3xl font-semibold text-center text-gray-300 mb-10">Sign-up</h2>
+				<h2 className="text-3xl font-semibold text-center text-gray-300 mb-10">Sign Up</h2>
 
 				<form onSubmit={handleSubmit}>
 					<label className="input input-bordered flex items-center gap-2 mb-4">
@@ -147,7 +147,7 @@ const Signup = () => {
 						selectedGender={inputs.gender}
 					/>
 
-					<p className="text-sm mt-2 inline-block">
+					<p className="text-xs mt-5 inline-block">
 						&nbsp; Already have an account?
 						<Link
 							to={"/login"}
@@ -160,7 +160,7 @@ const Signup = () => {
 						<button
 							className="btn btn-block btn-sm mt-2 h-11 text-lg"
 							disabled={loading}>
-							{loading ? <span className="loading loading-spinner"></span> : "Sign-up"}
+							{loading ? <span className="loading loading-spinner"></span> : "Create Account"}
 						</button>
 					</div>
 				</form>

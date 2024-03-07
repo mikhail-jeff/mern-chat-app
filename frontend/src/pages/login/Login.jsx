@@ -1,12 +1,23 @@
 import { Link } from "react-router-dom";
 import { BiShow } from "react-icons/bi";
 import { useState } from "react";
+import useLogin from "../../hooks/useLogin";
 
 const Login = () => {
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
+
+	const { loading, login } = useLogin();
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		await login(username, password);
 	};
 
 	return (
@@ -14,7 +25,7 @@ const Login = () => {
 			<div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-0">
 				<h2 className="text-3xl font-semibold text-center text-gray-300 mb-10">Login</h2>
 
-				<form>
+				<form onSubmit={handleSubmit}>
 					<label className="input input-bordered flex items-center gap-2 mb-4">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -27,6 +38,8 @@ const Login = () => {
 							type="text"
 							className="grow"
 							placeholder="Username"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
 						/>
 					</label>
 
@@ -46,14 +59,17 @@ const Login = () => {
 							type={showPassword ? "text" : "password"}
 							className="grow pr-10"
 							placeholder="Password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
 						/>
+
 						<BiShow
 							className="absolute right-3 top-3 cursor-pointer w-6 h-6"
 							onClick={togglePasswordVisibility}
 						/>
 					</label>
 
-					<p className="text-sm mt-2 inline-block">
+					<p className="text-xs mt-5 inline-block">
 						&nbsp; Don&apos;t have an account?
 						<Link
 							to={"/signup"}
@@ -63,7 +79,11 @@ const Login = () => {
 					</p>
 
 					<div>
-						<button className="btn btn-block btn-sm mt-2 h-11 text-lg">Login</button>
+						<button
+							className="btn btn-block btn-sm mt-2 h-11 text-lg"
+							disabled={loading}>
+							{loading ? <span className="loading loading-spinner"></span> : "Login"}
+						</button>
 					</div>
 				</form>
 			</div>

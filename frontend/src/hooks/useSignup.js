@@ -29,7 +29,7 @@ const useSignup = () => {
 				throw new Error(data.error);
 			}
 
-			console.log(data);
+			console.table(data);
 
 			// localstorage
 			localStorage.setItem("chat-user", JSON.stringify(data));
@@ -49,17 +49,17 @@ export default useSignup;
 
 function handleInputErrors({ fullName, username, password, confirmPassword, gender }) {
 	if (!fullName || !username || !password || !confirmPassword || !gender) {
-		toast.error("All fields are required.");
+		toast.error("All fields are required");
 		return false;
 	}
 
 	if (password !== confirmPassword) {
-		toast.error("Passwords do not match.");
+		toast.error("Passwords do not match");
 		return false;
 	}
 
 	if (password.length < 5) {
-		toast.error("Passwords must be at least 5 characters.");
+		toast.error("Passwords must be at least 5 characters");
 		return false;
 	}
 
