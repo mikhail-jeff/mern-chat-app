@@ -5,12 +5,13 @@ import Message from "./Message";
 
 const Messages = () => {
 	const { loading, messages } = useGetMessages();
+
 	const lastMessageRef = useRef();
 
 	// scroll down to the latest message
 	useEffect(() => {
 		setTimeout(() => {
-			lastMessageRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+			lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
 		}, 100);
 	}, [messages]);
 
@@ -28,7 +29,7 @@ const Messages = () => {
 
 			{loading && [...Array(3)].map((_, index) => <MessageSkeleton key={index} />)}
 
-			{!loading && messages.length == 0 && <p className="text-center">Send a message to start a conversation</p>}
+			{!loading && messages.length == 0 && <p className="mt-2 text-center">Send a message to start a conversation</p>}
 		</div>
 	);
 };

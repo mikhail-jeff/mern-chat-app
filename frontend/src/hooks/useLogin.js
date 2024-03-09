@@ -26,8 +26,6 @@ const useLogin = () => {
 				throw new Error(data.error);
 			}
 
-			console.table(data);
-
 			// localstorage
 			localStorage.setItem("chat-user", JSON.stringify(data));
 			// context
@@ -48,8 +46,7 @@ const useLogin = () => {
 	return { loading, login };
 };
 
-export default useLogin;
-
+// *** validation
 function handleInputErrors(username, password) {
 	if (!username || !password) {
 		toast.error("Username and password are required");
@@ -58,3 +55,5 @@ function handleInputErrors(username, password) {
 
 	return true;
 }
+
+export default useLogin;

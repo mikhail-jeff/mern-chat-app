@@ -18,6 +18,13 @@ const Login = () => {
 		e.preventDefault();
 
 		await login(username, password);
+
+		// clears after submitting
+		setUsername("");
+		setPassword("");
+
+		// reset password toggle
+		setShowPassword(false);
 	};
 
 	return (

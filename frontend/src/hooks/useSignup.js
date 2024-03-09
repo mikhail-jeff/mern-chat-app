@@ -29,8 +29,6 @@ const useSignup = () => {
 				throw new Error(data.error);
 			}
 
-			console.table(data);
-
 			// localstorage
 			localStorage.setItem("chat-user", JSON.stringify(data));
 			// context
@@ -45,8 +43,7 @@ const useSignup = () => {
 	return { loading, signup };
 };
 
-export default useSignup;
-
+// *** validation
 function handleInputErrors({ fullName, username, password, confirmPassword, gender }) {
 	if (!fullName || !username || !password || !confirmPassword || !gender) {
 		toast.error("All fields are required");
@@ -65,3 +62,5 @@ function handleInputErrors({ fullName, username, password, confirmPassword, gend
 
 	return true;
 }
+
+export default useSignup;

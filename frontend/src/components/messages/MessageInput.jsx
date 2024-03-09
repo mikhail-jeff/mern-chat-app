@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IoSendSharp } from "react-icons/io5";
+import { IoSend } from "react-icons/io5";
 import useSendMessage from "../../hooks/useSendMessage";
 
 const MessageInput = () => {
@@ -21,20 +21,27 @@ const MessageInput = () => {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="px-4 my-3">
-			<div className="w-full relative">
-				<input
+			className="px-2 my-2">
+			<div className="w-full flex gap-2">
+				<textarea
 					type="text"
-					placeholder="Send a message"
-					className="w-full border bg-gray-600 p-2.5 border-gray-600 text-sm rounded-lg block text-white"
+					placeholder="Write a message..."
+					className="w-full border bg-[#1D232A] p-2.5 border-gray-600 text-md rounded-md block text-white max-h-12 outline-none"
 					value={message}
 					onChange={(e) => setMessage(e.target.value)}
 				/>
 
 				<button
 					type="submit"
-					className="absolute inset-y-0 end-0 flex items-center pe-3">
-					{loading ? <div className="loading loading-spinner"></div> : <IoSendSharp />}
+					className="flex items-center transform transition-transform active:scale-75 duration-300">
+					{loading ? (
+						<div className="loading loading-spinner"></div>
+					) : (
+						<IoSend
+							size={30}
+							className="text-[#1D232A]"
+						/>
+					)}
 				</button>
 			</div>
 		</form>

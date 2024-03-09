@@ -17,7 +17,7 @@ const SearchInput = () => {
 		if (!search) return;
 
 		if (search.length < 3) {
-			return toast.error("Search term must be at least 3 characters long");
+			return toast.error("Must be at least 3 characters long");
 		}
 
 		// search algorithm
@@ -37,7 +37,7 @@ const SearchInput = () => {
 			<input
 				type="text"
 				placeholder="Search..."
-				className="input input-bordered rounded-full"
+				className="input focus:outline-none rounded-full bg-[#1D232A]"
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
 			/>

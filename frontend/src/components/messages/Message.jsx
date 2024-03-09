@@ -7,10 +7,10 @@ const Message = ({ message }) => {
 
 	const { selectedConversation } = useConversation();
 
-	const fromMe = message.senderId === authUser._id;
-	const chatClassName = fromMe ? "chat-end" : "chat-start";
-	const profilePIc = fromMe ? authUser.profilePic : selectedConversation?.profilePic;
-	const bubbleBgColor = fromMe ? "bg-sky-600" : "";
+	const fromAuthUser = message.senderId === authUser._id;
+	const chatClassName = fromAuthUser ? "chat-end" : "chat-start";
+	const profilePic = fromAuthUser ? authUser.profilePic : selectedConversation?.profilePic;
+	const bubbleBgColor = fromAuthUser ? "bg-sky-600" : "";
 
 	const formattedTime = extractTime(message.createdAt);
 
@@ -19,14 +19,14 @@ const Message = ({ message }) => {
 			<div className="chat-image avatar">
 				<div className="w-10 rounded-full">
 					<img
-						src={profilePIc}
+						src={profilePic}
 						alt="user avatar"
 					/>
 				</div>
 			</div>
 
 			<div className={`chat-bubble text-white ${bubbleBgColor}`}>{message.message}</div>
-			<div className="chat-footer opacity-50 text-xs flex gap-1 items-center">{formattedTime}</div>
+			<div className="chat-footer opacity-45 text-xs flex gap-1 items-center">{formattedTime}</div>
 		</div>
 	);
 };

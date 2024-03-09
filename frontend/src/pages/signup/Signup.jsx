@@ -142,6 +142,7 @@ const Signup = () => {
 						/>
 					</label>
 
+					{/* checkbox */}
 					<GenderCheckBox
 						onCheckboxChange={handleCheckboxChange}
 						selectedGender={inputs.gender}

@@ -2,6 +2,7 @@ const GenderCheckBox = ({ onCheckboxChange, selectedGender }) => {
 	const toggleCheckbox = (gender) => {
 		// Toggle the selected gender
 		const newSelectedGender = selectedGender === gender ? "" : gender;
+
 		// Call the parent component's onCheckboxChange function with the new selected gender
 		onCheckboxChange(newSelectedGender);
 	};

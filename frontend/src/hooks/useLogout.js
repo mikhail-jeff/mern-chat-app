@@ -9,6 +9,7 @@ const useLogout = () => {
 
 	const logout = async () => {
 		setLoading(true);
+
 		try {
 			const response = await axios.post("/api/auth/logout");
 
@@ -18,7 +19,9 @@ const useLogout = () => {
 				throw new Error(data.error);
 			}
 
+			// localstorage
 			localStorage.removeItem("chat-user");
+			// context
 			setAuthUser(null);
 		} catch (error) {
 			toast.error(error.message);
