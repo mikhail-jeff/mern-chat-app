@@ -13,6 +13,7 @@ const Message = ({ message }) => {
 	const bubbleBgColor = fromAuthUser ? "bg-sky-600" : "";
 
 	const formattedTime = extractTime(message.createdAt);
+	const shakeClass = message.shouldShake ? " shake" : "";
 
 	return (
 		<div className={`chat ${chatClassName}`}>
@@ -25,7 +26,7 @@ const Message = ({ message }) => {
 				</div>
 			</div>
 
-			<div className={`chat-bubble text-white ${bubbleBgColor}`}>{message.message}</div>
+			<div className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass}`}>{message.message}</div>
 			<div className="chat-footer opacity-45 text-xs flex gap-1 items-center">{formattedTime}</div>
 		</div>
 	);
